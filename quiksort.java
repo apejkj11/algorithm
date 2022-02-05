@@ -1,6 +1,7 @@
 class Solution{
 	public int[] sortArray(int[] nums){
 		quickSort(nums, 0, nums.length - 1);
+		return nums;
 	}
 	
 	public void quickSort(int[] nums, int start, int end){

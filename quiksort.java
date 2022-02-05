@@ -23,3 +23,47 @@ class Solution{
 		quickSort(nums, left, end);
 	}
 }
+
+
+//template
+class Solution{
+	public int[] sortArray(int[] nums){
+		quickSort(nums, 0, nums.length - 1);
+		return nums;
+	}
+	
+	public void quickSort(int[] nums, int left, int right){
+		if(left >= right) return;
+		int pivot = partition(nums, left, right);
+		quickSort(nums, left, pivot - 1);
+		quickSort(nums, pivot + 1, right);
+	}
+	
+	public int partition(int[] nums, int left, int right){
+		int pivot = nums[right];
+		int start = left, end = pivot -1;
+		while(start <= end){
+			if(nums[start] <= pivot) {
+				start ++;
+			}else if (nums[end] > pivot){
+				end --;
+			}else{
+				swap(nums, start++, end--);
+			}
+		}
+		swap(nums, start, right);
+		return start;
+	}
+	
+	public int partition2(int[] nums, int left, int right){
+		int pivot = nums[right], wall = left;
+		for(int i = left; i < right; i ++){
+			if(nums[i] < pivot){
+				swap(nums, i, wall);
+				wall++;
+			}
+		}
+		swap(nums, wall, right);
+		return wall;
+	}
+}
